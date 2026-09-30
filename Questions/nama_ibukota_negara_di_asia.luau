@@ -1,0 +1,56 @@
+--!strict
+
+return {
+	id = "nama_ibukota_negara_di_asia",
+	category = "Geografi",
+	prompt = "Sebutkan nama ibu kota negara-negara di benua Asia",
+	answers = {
+		-- Common / Popular answers (50 - 80 pts / meters)
+		["jakarta"] = 50,
+		["tokyo"] = 50,
+		["seoul"] = 50,
+		["beijing"] = 50,
+		["kuala lumpur"] = 50,
+		["singapura"] = 50,
+		["bangkok"] = 60,
+		["new delhi"] = 70,
+		["delhi"] = 70,
+		["manila"] = 70,
+		["hanoi"] = 80,
+		["riyadh"] = 80,
+
+		-- Uncommon answers (120 - 250 pts / meters)
+		["doha"] = 140,
+		["abu dhabi"] = 150,
+		["taipei"] = 150,
+		["islamabad"] = 160,
+		["teheran"] = 180,
+		["baghdad"] = 180,
+		["ankara"] = 200,
+		["dhaka"] = 200,
+		["colombo"] = 200,
+		["vientiane"] = 240,
+		["phnom penh"] = 220,
+		["bandar seri begawan"] = 250,
+		["naypyidaw"] = 250,
+		["dili"] = 220,
+		["nusantara"] = 150,
+
+		-- Rare / Obscure answers (350 - 500 pts / meters)
+		["ulan bator"] = 380,
+		["ulaanbaatar"] = 380,
+		["thimphu"] = 420,
+		["kathmandu"] = 360,
+		["ashgabat"] = 450,
+		["tashkent"] = 420,
+		["bishkek"] = 450,
+		["dushanbe"] = 460,
+		["nur sultan"] = 450,
+		["astana"] = 450,
+		["yerevan"] = 480,
+		["baku"] = 460,
+		["tbilisi"] = 480,
+		["muscat"] = 420,
+		["sanaa"] = 450,
+	},
+}
