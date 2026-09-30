@@ -41,7 +41,7 @@ end
 
 if targetContainer and targetContainer.GetChildren then
 	for _, child in targetContainer:GetChildren() do
-		if child:IsA("ModuleScript") and child ~= script and child.Name ~= "Types" and child.Name ~= "Validator" and child.Name ~= "TextNormalizer" then
+		if child:IsA("ModuleScript") and child ~= script and child.Name ~= "Types" and child.Name ~= "Validator" then
 			local success, q = pcall(require, child)
 			if success and typeof(q) == "table" and (q :: any).id then
 				register(q :: Question)
@@ -53,9 +53,11 @@ else
 	local questionFiles = {
 		"alat_musik_tradisional_indonesia",
 		"alat_transportasi_umum",
+		"bandara_dan_pelabuhan_indonesia",
 		"benda_di_dalam_ruang_kelas",
 		"buah_asli_tropis",
 		"bumbu_dapur_masakan_indonesia",
+		"danau_dan_sungai_di_indonesia",
 		"gunung_berapi_di_indonesia",
 		"hewan_berkaki_empat",
 		"hewan_endemik_indonesia",
@@ -68,9 +70,7 @@ else
 		"nama_ibukota_negara_di_asia",
 		"olahraga_populer_dunia",
 		"pahlawan_nasional_indonesia",
-		"provinsi_di_pulau_jawa",
 		"provinsi_indonesia",
-		"provinsi_sumatera",
 		"senjata_tradisional_nusantara",
 		"suku_bangsa_di_indonesia",
 		"tarian_tradisional_indonesia",
@@ -88,19 +88,6 @@ else
 end
 
 local QuestionsModule = {}
-
-local TextNormalizer
-if isRoblox and script and script:FindFirstChild("TextNormalizer") then
-	TextNormalizer = require(script.TextNormalizer)
-else
-	local ok, tn = pcall(require, "./TextNormalizer")
-	if not ok then
-		ok, tn = pcall(require, "../submodules/QuestionsModule/TextNormalizer")
-	end
-	TextNormalizer = tn
-end
-
-QuestionsModule.TextNormalizer = TextNormalizer
 
 function QuestionsModule.getAll(): { Question }
 	return allQuestions
