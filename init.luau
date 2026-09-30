@@ -59,6 +59,8 @@ else
 		"gunung_berapi_di_indonesia",
 		"hewan_berkaki_empat",
 		"hewan_endemik_indonesia",
+		"jajanan_pasar_kue_tradisional",
+		"kota_kabupaten_indonesia",
 		"lagu_daerah_indonesia",
 		"makanan_khas_indonesia",
 		"minuman_tradisional_indonesia",
@@ -66,8 +68,10 @@ else
 		"olahraga_populer_dunia",
 		"pahlawan_nasional_indonesia",
 		"provinsi_di_pulau_jawa",
+		"provinsi_indonesia",
 		"provinsi_sumatera",
 		"senjata_tradisional_nusantara",
+		"suku_bangsa_di_indonesia",
 		"tarian_tradisional_indonesia",
 	}
 

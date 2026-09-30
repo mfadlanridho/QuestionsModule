@@ -1,0 +1,58 @@
+--!strict
+
+return {
+	id = "provinsi_indonesia",
+	category = "Geografi",
+	prompt = "Sebutkan nama Provinsi yang ada di Indonesia",
+	answers = {
+		-- Common / Popular (50 - 80 pts / meters)
+		["dki jakarta"] = 50,
+		["jakarta"] = 50,
+		["jawa barat"] = 50,
+		["jawa tengah"] = 50,
+		["jawa timur"] = 50,
+		["bali"] = 50,
+		["sumatera utara"] = 60,
+		["sumatera barat"] = 60,
+		["sumatera selatan"] = 60,
+		["aceh"] = 60,
+		["banten"] = 60,
+		["di yogyakarta"] = 60,
+		["yogyakarta"] = 60,
+		["sulawesi selatan"] = 70,
+		["kalimantan timur"] = 70,
+		["riau"] = 70,
+		["lampung"] = 70,
+		["papua"] = 70,
+		["nusa tenggara barat"] = 80,
+		["nusa tenggara timur"] = 80,
+		["jambi"] = 80,
+
+		-- Uncommon (120 - 250 pts / meters)
+		["kalimantan barat"] = 140,
+		["kalimantan selatan"] = 140,
+		["kalimantan tengah"] = 140,
+		["sulawesi utara"] = 150,
+		["sulawesi tengah"] = 150,
+		["sulawesi tenggara"] = 150,
+		["bengkulu"] = 160,
+		["kepulauan bangka belitung"] = 160,
+		["bangka belitung"] = 160,
+		["kepulauan riau"] = 160,
+		["maluku"] = 150,
+		["maluku utara"] = 180,
+		["gorontalo"] = 180,
+		["sulawesi barat"] = 200,
+		["kalimantan utara"] = 220,
+		["papua barat"] = 200,
+
+		-- Rare / Obscure (350 - 500 pts / meters - The 4 New Provinces & Formal Titles)
+		["papua selatan"] = 380,
+		["papua tengah"] = 380,
+		["papua pegunungan"] = 400,
+		["papua barat daya"] = 420,
+		["daerah khusus ibukota jakarta"] = 450,
+		["daerah istimewa yogyakarta"] = 450,
+		["nanggroe aceh darussalam"] = 480,
+	},
+}
