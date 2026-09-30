@@ -1,6 +1,17 @@
 --!strict
 
-local Types = require(script.Types)
+local Types
+local isRoblox = pcall(function() return game:GetService("ReplicatedStorage") end)
+
+if isRoblox and script and script:FindFirstChild("Types") then
+	Types = require(script.Types)
+else
+	local ok, t = pcall(require, "./Types")
+	if not ok then
+		ok, t = pcall(require, "../submodules/QuestionsModule/Types")
+	end
+	Types = t
+end
 
 export type Question = Types.Question
 export type AnswerMap = Types.AnswerMap
@@ -24,22 +35,67 @@ end
 
 -- In Roblox environment: dynamically load all child ModuleScripts from Questions folder or self
 local targetContainer: Instance? = nil
-if script and script.FindFirstChild then
+if isRoblox and script and script.FindFirstChild then
 	targetContainer = script:FindFirstChild("Questions") or script
 end
 
 if targetContainer and targetContainer.GetChildren then
 	for _, child in targetContainer:GetChildren() do
-		if child:IsA("ModuleScript") and child ~= script and child.Name ~= "Types" and child.Name ~= "Validator" then
+		if child:IsA("ModuleScript") and child ~= script and child.Name ~= "Types" and child.Name ~= "Validator" and child.Name ~= "TextNormalizer" then
 			local success, q = pcall(require, child)
-			if success and typeof(q) == "table" and q.id then
+			if success and typeof(q) == "table" and (q :: any).id then
 				register(q :: Question)
 			end
+		end
+	end
+else
+	-- Standalone Luau CLI fallback
+	local questionFiles = {
+		"alat_musik_tradisional_indonesia",
+		"alat_transportasi_umum",
+		"benda_di_dalam_ruang_kelas",
+		"buah_asli_tropis",
+		"bumbu_dapur_masakan_indonesia",
+		"gunung_berapi_di_indonesia",
+		"hewan_berkaki_empat",
+		"hewan_endemik_indonesia",
+		"lagu_daerah_indonesia",
+		"makanan_khas_indonesia",
+		"minuman_tradisional_indonesia",
+		"nama_ibukota_negara_di_asia",
+		"olahraga_populer_dunia",
+		"pahlawan_nasional_indonesia",
+		"provinsi_di_pulau_jawa",
+		"provinsi_sumatera",
+		"senjata_tradisional_nusantara",
+		"tarian_tradisional_indonesia",
+	}
+
+	for _, f in questionFiles do
+		local ok, q = pcall(require, "./Questions/" .. f)
+		if not ok then
+			ok, q = pcall(require, "../submodules/QuestionsModule/Questions/" .. f)
+		end
+		if ok and typeof(q) == "table" and (q :: any).id then
+			register(q :: Question)
 		end
 	end
 end
 
 local QuestionsModule = {}
+
+local TextNormalizer
+if isRoblox and script and script:FindFirstChild("TextNormalizer") then
+	TextNormalizer = require(script.TextNormalizer)
+else
+	local ok, tn = pcall(require, "./TextNormalizer")
+	if not ok then
+		ok, tn = pcall(require, "../submodules/QuestionsModule/TextNormalizer")
+	end
+	TextNormalizer = tn
+end
+
+QuestionsModule.TextNormalizer = TextNormalizer
 
 function QuestionsModule.getAll(): { Question }
 	return allQuestions
